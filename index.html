@@ -2,12 +2,7 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="theme-color" content="#7c3aed">
-    <meta name="description" content="Gerador de Apostas - Lotofácil e Lotomania">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Loterias">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loterias Master</title>
     <style>
         * {
@@ -19,40 +14,32 @@
         html, body {
             width: 100%;
             height: 100%;
+            background: #f5f5f5;
+            color: #333;
+            font-family: Arial, sans-serif;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
-            background: #f5f5f5;
-            color: #333;
-            overflow: hidden;
-        }
-
-        .container {
-            width: 100%;
-            height: 100%;
             display: flex;
             flex-direction: column;
-            overflow: hidden;
         }
 
         .header {
-            background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+            background: linear-gradient(to right, #7c3aed, #6d28d9);
             color: white;
-            padding: 12px;
+            padding: 15px;
             text-align: center;
             flex-shrink: 0;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
 
         .header h1 {
-            font-size: 18px;
-            margin-bottom: 2px;
+            font-size: 20px;
+            margin: 0;
         }
 
         .header p {
-            font-size: 10px;
-            opacity: 0.9;
+            font-size: 12px;
+            margin: 3px 0 0 0;
         }
 
         .tabs {
@@ -69,10 +56,9 @@
             background: white;
             color: #666;
             font-size: 12px;
-            font-weight: 600;
+            font-weight: bold;
             cursor: pointer;
             border-bottom: 3px solid transparent;
-            transition: all 0.2s;
         }
 
         .tab-button.active {
@@ -84,7 +70,6 @@
             flex: 1;
             overflow-y: auto;
             padding: 12px;
-            -webkit-overflow-scrolling: touch;
         }
 
         .tab-content {
@@ -99,15 +84,15 @@
             background: white;
             padding: 12px;
             margin-bottom: 12px;
-            border-radius: 8px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border-radius: 6px;
+            border: 1px solid #e5e7eb;
         }
 
         .section h2 {
             font-size: 13px;
             color: #7c3aed;
             margin-bottom: 10px;
-            font-weight: 600;
+            font-weight: bold;
         }
 
         .form-group {
@@ -117,7 +102,7 @@
         .form-group label {
             display: block;
             font-size: 11px;
-            font-weight: 600;
+            font-weight: bold;
             margin-bottom: 4px;
             color: #333;
         }
@@ -126,28 +111,26 @@
             width: 100%;
             padding: 8px;
             border: 1px solid #ddd;
-            border-radius: 6px;
-            font-size: 13px;
-            font-family: inherit;
+            border-radius: 4px;
+            font-size: 12px;
+            font-family: Arial, sans-serif;
         }
 
         .form-group input:focus {
             outline: none;
             border-color: #7c3aed;
-            box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+            box-shadow: 0 0 0 2px rgba(124, 58, 237, 0.1);
         }
 
         .button {
             width: 100%;
             padding: 10px;
             border: none;
-            border-radius: 6px;
-            font-size: 13px;
-            font-weight: 600;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
             cursor: pointer;
-            transition: all 0.2s;
-            -webkit-user-select: none;
-            user-select: none;
+            margin-top: 5px;
         }
 
         .button-primary {
@@ -157,13 +140,11 @@
 
         .button-primary:active {
             opacity: 0.9;
-            transform: scale(0.98);
         }
 
         .button-secondary {
             background: #e5e7eb;
             color: #333;
-            margin-top: 6px;
         }
 
         .number-grid {
@@ -188,35 +169,23 @@
         .game-card {
             background: #f9f9f9;
             border: 1px solid #e5e7eb;
-            border-radius: 6px;
+            border-radius: 4px;
             padding: 10px;
             margin-bottom: 10px;
         }
 
         .game-card-title {
             font-size: 11px;
-            font-weight: 600;
+            font-weight: bold;
             color: #7c3aed;
             margin-bottom: 8px;
         }
 
         .alert {
             padding: 10px;
-            border-radius: 6px;
+            border-radius: 4px;
             margin-bottom: 10px;
             font-size: 12px;
-            animation: slideIn 0.3s ease;
-        }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
 
         .alert-success {
@@ -241,8 +210,8 @@
             width: 100%;
             padding: 8px;
             border: 1px solid #ddd;
-            border-radius: 6px;
-            font-size: 13px;
+            border-radius: 4px;
+            font-size: 12px;
             font-family: monospace;
         }
 
@@ -273,208 +242,217 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>🎰 Loterias Master</h1>
-            <p>Lotofácil + Lotomania</p>
-        </div>
+    <div class="header">
+        <h1>🎰 Loterias Master</h1>
+        <p>Lotofácil + Lotomania</p>
+    </div>
 
-        <div class="tabs">
-            <button class="tab-button active" onclick="switchTab('lotofacil')">🎯 Lotofácil</button>
-            <button class="tab-button" onclick="switchTab('lotomania')">🎲 Lotomania</button>
-        </div>
+    <div class="tabs">
+        <button class="tab-button active" onclick="switchTab('lotofacil')">🎯 Lotofácil</button>
+        <button class="tab-button" onclick="switchTab('lotomania')">🎲 Lotomania</button>
+    </div>
 
-        <div class="content">
-            <!-- TAB LOTOFÁCIL -->
-            <div id="lotofacil" class="tab-content active">
-                <!-- Último Resultado -->
-                <div class="section">
-                    <h2>📊 Último Resultado</h2>
-                    <p style="font-size: 11px; color: #666; margin-bottom: 10px;">Digite os 15 números (1-25):</p>
-                    <div class="form-group">
-                        <input type="text" id="lastNumbersLF" placeholder="Ex: 01 02 03 04 05 06 07 08 09 10 11 12 13 14 15" class="input-numbers">
-                        <div class="help-text">Deixe em branco para não usar este filtro</div>
-                    </div>
-                    <button class="button button-secondary" onclick="setLastNumbersLF()">Salvar</button>
-                    <div id="lastResultDisplayLF" style="margin-top: 10px;"></div>
+    <div class="content">
+        <!-- TAB LOTOFÁCIL -->
+        <div id="lotofacil" class="tab-content active">
+            <!-- Último Resultado -->
+            <div class="section">
+                <h2>📊 Último Resultado</h2>
+                <p style="font-size: 11px; color: #666; margin-bottom: 10px;">Digite os 15 números (1-25):</p>
+                <div class="form-group">
+                    <input type="text" id="lastNumbersLF" placeholder="Ex: 01 02 03 04 05 06 07 08 09 10 11 12 13 14 15" class="input-numbers">
+                    <div class="help-text">Deixe em branco para não usar este filtro</div>
                 </div>
-
-                <!-- Filtros -->
-                <div class="section">
-                    <h2>⚙️ Filtros</h2>
-                    <div class="form-group">
-                        <label>Quantidade de Jogos</label>
-                        <input type="number" id="numGamesLF" value="5" min="1" max="100">
-                    </div>
-                    <div class="row">
-                        <div class="form-group">
-                            <label>Pares</label>
-                            <input type="text" id="filterEvenLF" value="7,8">
-                        </div>
-                        <div class="form-group">
-                            <label>Moldura</label>
-                            <input type="text" id="filterFrameLF" value="9,10,11">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group">
-                            <label>Soma Mín</label>
-                            <input type="number" id="filterSumMinLF" value="170">
-                        </div>
-                        <div class="form-group">
-                            <label>Soma Máx</label>
-                            <input type="number" id="filterSumMaxLF" value="220">
-                        </div>
-                    </div>
-                    <button class="button button-primary" onclick="generateGamesLF()">GERAR JOGOS</button>
-                </div>
-
-                <!-- Resultados -->
-                <div class="section">
-                    <h2>✨ Resultados</h2>
-                    <div id="resultadosLF"></div>
-                </div>
+                <button class="button button-secondary" onclick="setLastNumbersLF()">Salvar</button>
+                <div id="lastResultDisplayLF" style="margin-top: 10px;"></div>
             </div>
 
-            <!-- TAB LOTOMANIA -->
-            <div id="lotomania" class="tab-content">
-                <!-- Último Resultado -->
-                <div class="section">
-                    <h2>📊 Último Resultado</h2>
-                    <p style="font-size: 11px; color: #666; margin-bottom: 10px;">Digite os 20 números (1-100):</p>
+            <!-- Filtros -->
+            <div class="section">
+                <h2>⚙️ Filtros</h2>
+                <div class="form-group">
+                    <label>Quantidade de Jogos</label>
+                    <input type="number" id="numGamesLF" value="5" min="1" max="100">
+                </div>
+                <div class="row">
                     <div class="form-group">
-                        <input type="text" id="lastNumbersLM" placeholder="Ex: 01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20" class="input-numbers">
-                        <div class="help-text">Deixe em branco para não usar este filtro</div>
+                        <label>Pares</label>
+                        <input type="text" id="filterEvenLF" value="7,8">
                     </div>
-                    <button class="button button-secondary" onclick="setLastNumbersLM()">Salvar</button>
-                    <div id="lastResultDisplayLM" style="margin-top: 10px;"></div>
-                </div>
-
-                <!-- Filtros -->
-                <div class="section">
-                    <h2>⚙️ Filtros</h2>
                     <div class="form-group">
-                        <label>Quantidade de Jogos</label>
-                        <input type="number" id="numGamesLM" value="5" min="1" max="100">
+                        <label>Moldura</label>
+                        <input type="text" id="filterFrameLF" value="9,10,11">
                     </div>
-                    <div class="row">
-                        <div class="form-group">
-                            <label>Pares (24-26)</label>
-                            <input type="text" id="filterEvenLM" value="25">
-                        </div>
-                        <div class="form-group">
-                            <label>Quadrante 1</label>
-                            <input type="text" id="filterQ1LM" value="5,7">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group">
-                            <label>Soma Mín</label>
-                            <input type="number" id="filterSumMinLM" value="2450">
-                        </div>
-                        <div class="form-group">
-                            <label>Soma Máx</label>
-                            <input type="number" id="filterSumMaxLM" value="2550">
-                        </div>
-                    </div>
-                    <button class="button button-primary" onclick="generateGamesLM()">GERAR JOGOS</button>
                 </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label>Soma Mín</label>
+                        <input type="number" id="filterSumMinLF" value="170">
+                    </div>
+                    <div class="form-group">
+                        <label>Soma Máx</label>
+                        <input type="number" id="filterSumMaxLF" value="220">
+                    </div>
+                </div>
+                <button class="button button-primary" onclick="generateGamesLF()">GERAR JOGOS</button>
+            </div>
 
-                <!-- Resultados -->
-                <div class="section">
-                    <h2>✨ Resultados</h2>
-                    <div id="resultadosLM"></div>
+            <!-- Resultados -->
+            <div class="section">
+                <h2>✨ Resultados</h2>
+                <div id="resultadosLF"></div>
+            </div>
+        </div>
+
+        <!-- TAB LOTOMANIA -->
+        <div id="lotomania" class="tab-content">
+            <!-- Último Resultado -->
+            <div class="section">
+                <h2>📊 Último Resultado</h2>
+                <p style="font-size: 11px; color: #666; margin-bottom: 10px;">Digite os 20 números (1-100):</p>
+                <div class="form-group">
+                    <input type="text" id="lastNumbersLM" placeholder="Ex: 01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20" class="input-numbers">
+                    <div class="help-text">Deixe em branco para não usar este filtro</div>
                 </div>
+                <button class="button button-secondary" onclick="setLastNumbersLM()">Salvar</button>
+                <div id="lastResultDisplayLM" style="margin-top: 10px;"></div>
+            </div>
+
+            <!-- Filtros -->
+            <div class="section">
+                <h2>⚙️ Filtros</h2>
+                <div class="form-group">
+                    <label>Quantidade de Jogos</label>
+                    <input type="number" id="numGamesLM" value="5" min="1" max="100">
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label>Pares (24-26)</label>
+                        <input type="text" id="filterEvenLM" value="25">
+                    </div>
+                    <div class="form-group">
+                        <label>Quadrante 1</label>
+                        <input type="text" id="filterQ1LM" value="5,7">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label>Soma Mín</label>
+                        <input type="number" id="filterSumMinLM" value="2450">
+                    </div>
+                    <div class="form-group">
+                        <label>Soma Máx</label>
+                        <input type="number" id="filterSumMaxLM" value="2550">
+                    </div>
+                </div>
+                <button class="button button-primary" onclick="generateGamesLM()">GERAR JOGOS</button>
+            </div>
+
+            <!-- Resultados -->
+            <div class="section">
+                <h2>✨ Resultados</h2>
+                <div id="resultadosLM"></div>
             </div>
         </div>
     </div>
 
     <script>
-        const PRIMES = [2, 3, 5, 7, 11, 13, 17, 19, 23];
         const FRAME = [1, 2, 3, 4, 5, 6, 10, 11, 15, 16, 20, 21, 22, 23, 24, 25];
 
         let lastResultLF = [];
         let lastResultLM = [];
 
         // Carregar dados ao iniciar
-        window.addEventListener('load', () => {
+        window.addEventListener('load', function() {
             loadData();
             displayLastResultLF();
             displayLastResultLM();
         });
 
         function loadData() {
-            const savedLF = localStorage.getItem('lotofacil_last');
-            const savedLM = localStorage.getItem('lotomania_last');
-            if (savedLF) {
-                try {
+            try {
+                const savedLF = localStorage.getItem('lotofacil_last');
+                const savedLM = localStorage.getItem('lotomania_last');
+                if (savedLF) {
                     lastResultLF = JSON.parse(savedLF);
-                } catch (e) {}
-            }
-            if (savedLM) {
-                try {
+                }
+                if (savedLM) {
                     lastResultLM = JSON.parse(savedLM);
-                } catch (e) {}
+                }
+            } catch (e) {
+                console.log('Erro ao carregar dados');
             }
         }
 
         function switchTab(tab) {
-            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-            document.querySelectorAll('.tab-button').forEach(el => el.classList.remove('active'));
+            var contents = document.querySelectorAll('.tab-content');
+            for (var i = 0; i < contents.length; i++) {
+                contents[i].classList.remove('active');
+            }
+            
+            var buttons = document.querySelectorAll('.tab-button');
+            for (var i = 0; i < buttons.length; i++) {
+                buttons[i].classList.remove('active');
+            }
+            
             document.getElementById(tab).classList.add('active');
             event.target.classList.add('active');
         }
 
         // ===== LOTOFÁCIL =====
         function setLastNumbersLF() {
-            const input = document.getElementById('lastNumbersLF').value.trim();
+            var input = document.getElementById('lastNumbersLF').value.trim();
             if (!input) {
                 lastResultLF = [];
-                localStorage.removeItem('lotofacil_last');
+                try {
+                    localStorage.removeItem('lotofacil_last');
+                } catch (e) {}
                 displayLastResultLF();
                 showAlert('Último resultado removido', 'success');
                 return;
             }
 
-            const numbers = input.split(/[\s,]+/).map(n => parseInt(n)).filter(n => !isNaN(n) && n >= 1 && n <= 25);
+            var numbers = input.split(/[\s,]+/).map(function(n) { return parseInt(n); }).filter(function(n) { return !isNaN(n) && n >= 1 && n <= 25; });
             if (numbers.length !== 15) {
                 showAlert('Digite exatamente 15 números entre 1 e 25', 'error');
                 return;
             }
 
-            lastResultLF = numbers.sort((a, b) => a - b);
-            localStorage.setItem('lotofacil_last', JSON.stringify(lastResultLF));
+            lastResultLF = numbers.sort(function(a, b) { return a - b; });
+            try {
+                localStorage.setItem('lotofacil_last', JSON.stringify(lastResultLF));
+            } catch (e) {}
             displayLastResultLF();
             document.getElementById('lastNumbersLF').value = '';
             showAlert('Resultado salvo!', 'success');
         }
 
         function displayLastResultLF() {
-            const display = document.getElementById('lastResultDisplayLF');
+            var display = document.getElementById('lastResultDisplayLF');
             if (lastResultLF.length === 0) {
                 display.innerHTML = '<p style="font-size: 11px; color: #999;">Nenhum resultado definido</p>';
                 return;
             }
 
-            let html = '<p style="font-size: 11px; font-weight: 600; color: #7c3aed; margin-bottom: 6px;">Números salvos:</p>';
+            var html = '<p style="font-size: 11px; font-weight: bold; color: #7c3aed; margin-bottom: 6px;">Números salvos:</p>';
             html += '<div class="number-grid">';
-            lastResultLF.forEach(n => {
-                html += `<div class="number-ball">${String(n).padStart(2, '0')}</div>`;
-            });
+            for (var i = 0; i < lastResultLF.length; i++) {
+                html += '<div class="number-ball">' + String(lastResultLF[i]).padStart(2, '0') + '</div>';
+            }
             html += '</div>';
             display.innerHTML = html;
         }
 
         function generateGamesLF() {
-            const num = parseInt(document.getElementById('numGamesLF').value) || 5;
-            const games = [];
-            let attempts = 0;
+            var num = parseInt(document.getElementById('numGamesLF').value) || 5;
+            var games = [];
+            var attempts = 0;
 
             while (games.length < num && attempts < num * 2000) {
                 attempts++;
-                const game = generateRandomGameLF();
+                var game = generateRandomGameLF();
                 if (validateGameLF(game)) {
-                    games.push(game.sort((a, b) => a - b));
+                    games.push(game.sort(function(a, b) { return a - b; }));
                 }
             }
 
@@ -483,42 +461,61 @@
                 return;
             }
 
-            let html = `<p style="font-size: 11px; font-weight: 600; color: #7c3aed; margin-bottom: 10px;">Total: ${games.length} jogos</p>`;
-            games.forEach((game, index) => {
-                const soma = game.reduce((a,b)=>a+b,0);
-                html += `<div class="game-card"><div class="game-card-title">JOGO ${index + 1} - Soma: ${soma}</div><div class="number-grid">${game.map(n => `<div class="number-ball">${String(n).padStart(2, '0')}</div>`).join('')}</div></div>`;
-            });
+            var html = '<p style="font-size: 11px; font-weight: bold; color: #7c3aed; margin-bottom: 10px;">Total: ' + games.length + ' jogos</p>';
+            for (var i = 0; i < games.length; i++) {
+                var game = games[i];
+                var soma = 0;
+                for (var j = 0; j < game.length; j++) {
+                    soma += game[j];
+                }
+                html += '<div class="game-card"><div class="game-card-title">JOGO ' + (i + 1) + ' - Soma: ' + soma + '</div><div class="number-grid">';
+                for (var j = 0; j < game.length; j++) {
+                    html += '<div class="number-ball">' + String(game[j]).padStart(2, '0') + '</div>';
+                }
+                html += '</div></div>';
+            }
 
             document.getElementById('resultadosLF').innerHTML = html;
-            showAlert(`${games.length} jogos gerados!`, 'success');
+            showAlert(games.length + ' jogos gerados!', 'success');
         }
 
         function generateRandomGameLF() {
-            const numbers = [];
+            var numbers = [];
             while (numbers.length < 15) {
-                const n = Math.floor(Math.random() * 25) + 1;
-                if (!numbers.includes(n)) numbers.push(n);
+                var n = Math.floor(Math.random() * 25) + 1;
+                if (numbers.indexOf(n) === -1) {
+                    numbers.push(n);
+                }
             }
             return numbers;
         }
 
         function validateGameLF(game) {
-            const evenFilters = document.getElementById('filterEvenLF').value.split(',').map(n => parseInt(n.trim())).filter(n => !isNaN(n));
-            const frameFilters = document.getElementById('filterFrameLF').value.split(',').map(n => parseInt(n.trim())).filter(n => !isNaN(n));
+            var evenFilters = document.getElementById('filterEvenLF').value.split(',').map(function(n) { return parseInt(n.trim()); }).filter(function(n) { return !isNaN(n); });
+            var frameFilters = document.getElementById('filterFrameLF').value.split(',').map(function(n) { return parseInt(n.trim()); }).filter(function(n) { return !isNaN(n); });
 
             if (evenFilters.length > 0) {
-                const evens = game.filter(n => n % 2 === 0).length;
-                if (!evenFilters.includes(evens)) return false;
+                var evens = 0;
+                for (var i = 0; i < game.length; i++) {
+                    if (game[i] % 2 === 0) evens++;
+                }
+                if (evenFilters.indexOf(evens) === -1) return false;
             }
 
             if (frameFilters.length > 0) {
-                const frameCount = game.filter(n => FRAME.includes(n)).length;
-                if (!frameFilters.includes(frameCount)) return false;
+                var frameCount = 0;
+                for (var i = 0; i < game.length; i++) {
+                    if (FRAME.indexOf(game[i]) !== -1) frameCount++;
+                }
+                if (frameFilters.indexOf(frameCount) === -1) return false;
             }
 
-            const sum = game.reduce((a, b) => a + b, 0);
-            const sumMin = parseInt(document.getElementById('filterSumMinLF').value) || 0;
-            const sumMax = parseInt(document.getElementById('filterSumMaxLF').value) || 9999;
+            var sum = 0;
+            for (var i = 0; i < game.length; i++) {
+                sum += game[i];
+            }
+            var sumMin = parseInt(document.getElementById('filterSumMinLF').value) || 0;
+            var sumMax = parseInt(document.getElementById('filterSumMaxLF').value) || 9999;
             if (sum < sumMin || sum > sumMax) return false;
 
             return true;
@@ -526,54 +523,58 @@
 
         // ===== LOTOMANIA =====
         function setLastNumbersLM() {
-            const input = document.getElementById('lastNumbersLM').value.trim();
+            var input = document.getElementById('lastNumbersLM').value.trim();
             if (!input) {
                 lastResultLM = [];
-                localStorage.removeItem('lotomania_last');
+                try {
+                    localStorage.removeItem('lotomania_last');
+                } catch (e) {}
                 displayLastResultLM();
                 showAlert('Último resultado removido', 'success');
                 return;
             }
 
-            const numbers = input.split(/[\s,]+/).map(n => parseInt(n)).filter(n => !isNaN(n) && n >= 1 && n <= 100);
+            var numbers = input.split(/[\s,]+/).map(function(n) { return parseInt(n); }).filter(function(n) { return !isNaN(n) && n >= 1 && n <= 100; });
             if (numbers.length !== 20) {
                 showAlert('Digite exatamente 20 números entre 1 e 100', 'error');
                 return;
             }
 
-            lastResultLM = numbers.sort((a, b) => a - b);
-            localStorage.setItem('lotomania_last', JSON.stringify(lastResultLM));
+            lastResultLM = numbers.sort(function(a, b) { return a - b; });
+            try {
+                localStorage.setItem('lotomania_last', JSON.stringify(lastResultLM));
+            } catch (e) {}
             displayLastResultLM();
             document.getElementById('lastNumbersLM').value = '';
             showAlert('Resultado salvo!', 'success');
         }
 
         function displayLastResultLM() {
-            const display = document.getElementById('lastResultDisplayLM');
+            var display = document.getElementById('lastResultDisplayLM');
             if (lastResultLM.length === 0) {
                 display.innerHTML = '<p style="font-size: 11px; color: #999;">Nenhum resultado definido</p>';
                 return;
             }
 
-            let html = '<p style="font-size: 11px; font-weight: 600; color: #7c3aed; margin-bottom: 6px;">Números salvos:</p>';
+            var html = '<p style="font-size: 11px; font-weight: bold; color: #7c3aed; margin-bottom: 6px;">Números salvos:</p>';
             html += '<div class="number-grid-lotomania">';
-            lastResultLM.forEach(n => {
-                html += `<div class="number-ball-small">${String(n).padStart(2, '0')}</div>`;
-            });
+            for (var i = 0; i < lastResultLM.length; i++) {
+                html += '<div class="number-ball-small">' + String(lastResultLM[i]).padStart(2, '0') + '</div>';
+            }
             html += '</div>';
             display.innerHTML = html;
         }
 
         function generateGamesLM() {
-            const num = parseInt(document.getElementById('numGamesLM').value) || 5;
-            const games = [];
-            let attempts = 0;
+            var num = parseInt(document.getElementById('numGamesLM').value) || 5;
+            var games = [];
+            var attempts = 0;
 
             while (games.length < num && attempts < num * 2000) {
                 attempts++;
-                const game = generateRandomGameLM();
+                var game = generateRandomGameLM();
                 if (validateGameLM(game)) {
-                    games.push(game.sort((a, b) => a - b));
+                    games.push(game.sort(function(a, b) { return a - b; }));
                 }
             }
 
@@ -582,36 +583,52 @@
                 return;
             }
 
-            let html = `<p style="font-size: 11px; font-weight: 600; color: #7c3aed; margin-bottom: 10px;">Total: ${games.length} jogos</p>`;
-            games.forEach((game, index) => {
-                const soma = game.reduce((a,b)=>a+b,0);
-                html += `<div class="game-card"><div class="game-card-title">JOGO ${index + 1} - Soma: ${soma}</div><div class="number-grid-lotomania">${game.map(n => `<div class="number-ball-small">${String(n).padStart(2, '0')}</div>`).join('')}</div></div>`;
-            });
+            var html = '<p style="font-size: 11px; font-weight: bold; color: #7c3aed; margin-bottom: 10px;">Total: ' + games.length + ' jogos</p>';
+            for (var i = 0; i < games.length; i++) {
+                var game = games[i];
+                var soma = 0;
+                for (var j = 0; j < game.length; j++) {
+                    soma += game[j];
+                }
+                html += '<div class="game-card"><div class="game-card-title">JOGO ' + (i + 1) + ' - Soma: ' + soma + '</div><div class="number-grid-lotomania">';
+                for (var j = 0; j < game.length; j++) {
+                    html += '<div class="number-ball-small">' + String(game[j]).padStart(2, '0') + '</div>';
+                }
+                html += '</div></div>';
+            }
 
             document.getElementById('resultadosLM').innerHTML = html;
-            showAlert(`${games.length} jogos gerados!`, 'success');
+            showAlert(games.length + ' jogos gerados!', 'success');
         }
 
         function generateRandomGameLM() {
-            const numbers = [];
+            var numbers = [];
             while (numbers.length < 50) {
-                const n = Math.floor(Math.random() * 100) + 1;
-                if (!numbers.includes(n)) numbers.push(n);
+                var n = Math.floor(Math.random() * 100) + 1;
+                if (numbers.indexOf(n) === -1) {
+                    numbers.push(n);
+                }
             }
             return numbers;
         }
 
         function validateGameLM(game) {
-            const evenFilters = document.getElementById('filterEvenLM').value.split(',').map(n => parseInt(n.trim())).filter(n => !isNaN(n));
+            var evenFilters = document.getElementById('filterEvenLM').value.split(',').map(function(n) { return parseInt(n.trim()); }).filter(function(n) { return !isNaN(n); });
 
             if (evenFilters.length > 0) {
-                const evens = game.filter(n => n % 2 === 0).length;
-                if (!evenFilters.includes(evens)) return false;
+                var evens = 0;
+                for (var i = 0; i < game.length; i++) {
+                    if (game[i] % 2 === 0) evens++;
+                }
+                if (evenFilters.indexOf(evens) === -1) return false;
             }
 
-            const sum = game.reduce((a, b) => a + b, 0);
-            const sumMin = parseInt(document.getElementById('filterSumMinLM').value) || 0;
-            const sumMax = parseInt(document.getElementById('filterSumMaxLM').value) || 9999;
+            var sum = 0;
+            for (var i = 0; i < game.length; i++) {
+                sum += game[i];
+            }
+            var sumMin = parseInt(document.getElementById('filterSumMinLM').value) || 0;
+            var sumMax = parseInt(document.getElementById('filterSumMaxLM').value) || 9999;
             if (sum < sumMin || sum > sumMax) return false;
 
             return true;
@@ -619,12 +636,18 @@
 
         // ===== COMUM =====
         function showAlert(message, type) {
-            const alert = document.createElement('div');
-            alert.className = `alert alert-${type}`;
-            alert.textContent = message;
-            const content = document.querySelector('.content');
-            content.insertBefore(alert, content.firstChild);
-            setTimeout(() => alert.remove(), 3000);
+            var alertDiv = document.createElement('div');
+            alertDiv.className = 'alert alert-' + type;
+            alertDiv.textContent = message;
+            var content = document.querySelector('.content');
+            if (content.firstChild) {
+                content.insertBefore(alertDiv, content.firstChild);
+            } else {
+                content.appendChild(alertDiv);
+            }
+            setTimeout(function() {
+                alertDiv.remove();
+            }, 3000);
         }
     </script>
 </body>
